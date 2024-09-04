@@ -11,6 +11,37 @@ const int totalBoxes = 10;
 const int maxAttempts = 5;
 const int maxRounds = 3;
 
+bool searchNumber(int prisonerNum, const vector<int>& boxes);
+void boxInitalization(vector<int> &boxes);
+
+int main() {
+    vector<int> boxes(totalBoxes);  // initalization of boxes vector with size of 10 (totalBoxes)
+
+    cout << "Lab 2 - Prisoner Escape\n@ AJ Arguello\n9/4/2024\n\n";
+
+    for (int round = 0; round < maxRounds; ++round) { 
+        boxInitalization(boxes); // called function shuffles numbers 
+
+
+        // Display the numbers inside each box (for debugging purposes
+        cout << "Box elements: ";
+        for (int i = 0; i < totalBoxes; ++i) { // displays results of each box check 
+            cout << boxes[i] << " ";
+        }
+
+        for (int prisoner = 1; prisoner <= totalBoxes; ++prisoner) { // for loop iterates over each prisoner #, each must find their number within 5 attempts
+            cout << "\n";
+            searchNumber(prisoner, boxes);
+        }
+        round++;
+
+        system("pause");
+
+    }
+
+    return 0;
+}
+
 // Function to initialize boxes with numbers and shuffle them
 void boxInitalization(vector<int>& boxes) {
     vector<int> numbers(totalBoxes); // numbers vector is initalized containing totalBoxes elements
@@ -47,30 +78,4 @@ bool searchNumber(int prisonerNum, const vector<int>& boxes) {
     // If the loop ends, the prisoner didn't find their number within the allowed attempts
     cout << "Prisoner " << prisonerNum << " could not find their number within " << maxAttempts << " attempts.\n";
     return false; // fail
-}
-
-int main() {
-    vector<int> boxes(totalBoxes);  // initalization of boxes vector with size of 10 (totalBoxes)
-
-    for (int round = 0; round < maxRounds; ++round) { 
-        boxInitalization(boxes); // called function shuffles numbers 
-
-
-        // Display the numbers inside each box (for debugging purposes
-        cout << "Box elements: ";
-        for (int i = 0; i < totalBoxes; ++i) { // displays results of each box check 
-            cout << boxes[i] << " ";
-        }
-
-        for (int prisoner = 1; prisoner <= totalBoxes; ++prisoner) { // for loop iterates over each prisoner #, each must find their number within 5 attempts
-            cout << "\n";
-            searchNumber(prisoner, boxes);
-        }
-        round++;
-
-        system("pause");
-
-    }
-
-    return 0;
 }
