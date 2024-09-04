@@ -26,7 +26,7 @@ void boxInitalization(vector<int>& boxes) {
 }
 
 // Function to simulate a prisoner finding their own number
-bool findNumber(int prisonerNum, const vector<int>& boxes) {
+bool searchNumber(int prisonerNum, const vector<int>& boxes) {
     int currentBox = prisonerNum - 1; // Start at the box corresponding to the prisoner number
     int attempts = 0; // counts the attempts by prisoner(s)
     
@@ -51,18 +51,25 @@ bool findNumber(int prisonerNum, const vector<int>& boxes) {
 
 int main() {
     vector<int> boxes(totalBoxes);  // initalization of boxes vector with size of 10 (totalBoxes)
-    boxInitalization(boxes); // called function shuffles numbers 
+
+    for (int round = 0; round < maxRounds; ++round) { 
+        boxInitalization(boxes); // called function shuffles numbers 
 
 
-    // Display the numbers inside each box (for debugging purposes)
-    cout << "Box elements: ";
-    for (int i = 0; i < totalBoxes; ++i) { // displays results of each box check 
-        cout << boxes[i] << " ";
-    }
+        // Display the numbers inside each box (for debugging purposes
+        cout << "Box elements: ";
+        for (int i = 0; i < totalBoxes; ++i) { // displays results of each box check 
+            cout << boxes[i] << " ";
+        }
 
-    for (int prisoner = 1; prisoner <= totalBoxes; ++prisoner) { // for loop iterates over each prisoner #, each must find their number within 5 attempts
-        cout << "\n";
-        findNumber(prisoner, boxes);
+        for (int prisoner = 1; prisoner <= totalBoxes; ++prisoner) { // for loop iterates over each prisoner #, each must find their number within 5 attempts
+            cout << "\n";
+            searchNumber(prisoner, boxes);
+        }
+        round++;
+
+        system("pause");
+
     }
 
     return 0;
