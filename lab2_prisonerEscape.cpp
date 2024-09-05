@@ -15,15 +15,15 @@ bool searchNumber(int prisonerNum, const vector<int>& boxes);
 void boxInitalization(vector<int> &boxes);
 
 int main() {
-    vector<int> boxes(totalBoxes);  // initalization of boxes vector with size of 10 (totalBoxes)
-
     cout << "Lab 2 - Prisoner Escape\n@ AJ Arguello\n9/4/2024\n\n";
 
     for (int round = 0; round < maxRounds; ++round) { 
+        cout << "\n============\n";
+        vector<int> boxes(totalBoxes);  // initalization of boxes vector with size of 10 (totalBoxes)
         boxInitalization(boxes); // called function shuffles numbers 
 
 
-        // Display the numbers inside each box (for debugging purposes
+        // Display the numbers inside each box 
         cout << "Box elements: ";
         for (int i = 0; i < totalBoxes; ++i) { // displays results of each box check 
             cout << boxes[i] << " ";
@@ -35,7 +35,7 @@ int main() {
         }
         round++;
 
-        system("pause");
+       // system("pause");
 
     }
 
